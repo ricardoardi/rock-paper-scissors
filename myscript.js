@@ -30,10 +30,11 @@ let computerScore = 0;
 function playRound(humanChoice,computerChoice){
     if(humanChoice=="paper"){
         if(computerChoice=="rock"){
+            humanScore+=1;
             return "you win! paper beats rock";
-            humanScore+=1
         }
         else if(computerChoice=="scissor"){
+            computerScore+=1;
             return "you lose! scissor beats paper";
         }
         else{
@@ -42,9 +43,11 @@ function playRound(humanChoice,computerChoice){
     }
     else if(humanChoice=="rock"){
         if(computerChoice=="scissor"){
+            humanScore+=1;
             return "you win! rock beats scissor";
         }
         else if(computerChoice=="paper"){
+            computerScore+=1;
             return "you lose! paper beats rock";
         }
         else{
@@ -54,9 +57,11 @@ function playRound(humanChoice,computerChoice){
 
     else if(humanChoice=="scissor"){
         if(computerChoice=="paper"){
+            humanScore+=1;
             return "you win! scissor beats paper";
         }
         else if(computerChoice=="rock"){
+            computerScore+=1;
             return "you lose! rock beats scissor";
         }
         else{
@@ -65,10 +70,22 @@ function playRound(humanChoice,computerChoice){
     }
 }
 
+function playGame(round){
+    for (let i=1;i<=round;i++){
+        const humanChoice=getHumanChoice().toLowerCase();
+        const computerChoice=getComputerChoice().toLowerCase();
+        console.log(humanChoice);
+        console.log(computerChoice);
+        console.log(playRound(humanChoice,computerChoice));
+        console.log(humanScore);
+        console.log(computerScore);
+    }
+    if(humanScore>computerScore){
+        console.log("You Win!!");
+    }
+    else{
+        console.log("You Lose!");
+    }
+}
 
-const humanChoice=getHumanChoice().toLowerCase();
-const computerChoice=getComputerChoice().toLowerCase();
-
-console.log(humanChoice);
-console.log(computerChoice);
-console.log(playRound(humanChoice,computerChoice))
+console.log(playGame(5))
