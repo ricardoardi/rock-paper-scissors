@@ -13,19 +13,90 @@ function getComputerChoice(){
     }
     return choice;
 }
+const paper = document.querySelector("#paper");
+const rock = document.querySelector("#rock");
+const scissor = document.querySelector("#scissor");
+const result = document.querySelector("#result");
 
-function getHumanChoice(){
-    let answer= prompt("Enter your answer");
-    if(answer.toLowerCase()=="rock"||answer.toLowerCase()=="paper"||answer.toLowerCase()=="scissor"){
-        return answer
-    }
-    else{
-        return "wrong input please input Rock/Paper/Scissor"
+paper.addEventListener("click",()=>{
+    const humanChoice="paper";
+    const ppr = document.createElement("div");
+    ppr.textContent=humanChoice;
+    result.appendChild(ppr);
+    const computerChoice=getComputerChoice().toLowerCase();
+    const comCh = document.createElement("div");
+    comCh.textContent=computerChoice;
+    result.appendChild(comCh);
+    const final = document.createElement("div");
+    final.textContent=playRound(humanChoice,computerChoice);
+    result.appendChild(final);
+    const hScore = document.createElement("div");
+    hScore.textContent=humanScore;
+    result.appendChild(hScore);
+    const cScore = document.createElement("div");
+    cScore.textContent=computerScore;
+    result.appendChild(cScore);
+    checkScore(humanScore,computerScore);
+})
+
+rock.addEventListener("click",()=>{
+    const humanChoice="rock";
+    const rck = document.createElement("div");
+    rck.textContent=humanChoice;
+    result.appendChild(rck);
+    const computerChoice=getComputerChoice().toLowerCase();
+    const comCh = document.createElement("div");
+    comCh.textContent=computerChoice;
+    result.appendChild(comCh);
+    const final = document.createElement("div");
+    final.textContent=playRound(humanChoice,computerChoice);
+    result.appendChild(final);
+    const hScore = document.createElement("div");
+    hScore.textContent=humanScore;
+    result.appendChild(hScore);
+    const cScore = document.createElement("div");
+    cScore.textContent=computerScore;
+    result.appendChild(cScore);  
+    checkScore(humanScore,computerScore);
+})
+
+scissor.addEventListener("click",()=>{
+    const humanChoice="scissor";
+    const scr = document.createElement("div");
+    scr.textContent=humanChoice;
+    result.appendChild(scr);
+    const computerChoice=getComputerChoice().toLowerCase();
+    const comCh = document.createElement("div");
+    comCh.textContent=computerChoice;
+    result.appendChild(comCh);
+    const final = document.createElement("div");
+    final.textContent=playRound(humanChoice,computerChoice);
+    result.appendChild(final);
+    const hScore = document.createElement("div");
+    hScore.textContent=humanScore;
+    result.appendChild(hScore);
+    const cScore = document.createElement("div");
+    cScore.textContent=computerScore;
+    result.appendChild(cScore);  
+    checkScore(humanScore,computerScore);
+})
+let humanScore = 0;
+let computerScore = 0;
+
+
+function checkScore(humanScore,computerScore){
+    if (humanScore==5){
+        const h2 = document.createElement("h2");
+        h2.textContent = "You win Horay";
+        result.appendChild(h2);
+    }else if(computerScore==5){
+        const h2 = document.createElement("h2");
+        h2.textContent = "You lost Sadge";
+        result.appendChild(h2);
     }
 }
 
-let humanScore = 0;
-let computerScore = 0;
+
 
 function playRound(humanChoice,computerChoice){
     if(humanChoice=="paper"){
@@ -69,23 +140,3 @@ function playRound(humanChoice,computerChoice){
         }
     }
 }
-
-function playGame(round){
-    for (let i=1;i<=round;i++){
-        const humanChoice=getHumanChoice().toLowerCase();
-        const computerChoice=getComputerChoice().toLowerCase();
-        console.log(humanChoice);
-        console.log(computerChoice);
-        console.log(playRound(humanChoice,computerChoice));
-        console.log(humanScore);
-        console.log(computerScore);
-    }
-    if(humanScore>computerScore){
-        console.log("You Win!!");
-    }
-    else{
-        console.log("You Lose!");
-    }
-}
-
-console.log(playGame(5))
